@@ -9,7 +9,7 @@ const jsDir = path.join(projectDir, 'js');
 
 if (!fs.existsSync(projectDir)) {
     fs.mkdirSync(projectDir);
-    console.log(`${projectDir} created successfully!`);
+    console.log(`Frontend scaffold created successfully!`);
 } else {
     console.error(`Project directory "${projectDir}" already exists.`);
 }
