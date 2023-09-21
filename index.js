@@ -12,37 +12,36 @@ if (!fs.existsSync(projectDir)) {
     console.log(`Frontend scaffold created successfully!`);
 } else {
     console.error(`Project directory "${projectDir}" already exists.`);
-}
+} 
+    const htmlContent = `
+        <!DOCTYPE html> 
+        <html lang="en"> 
+        <head> 
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/style.css"> 
+        <title>Document</title> 
+        </head> 
+        <body> 
+        <h1>Welcome</h1> 
+        <script src="./js/script.js"></script> 
+        </body>
+        </html>`;
+ 
 
-if (!fs.existsSync(htmlDir)) {
-    fs.mkdirSync(htmlDir);
-    console.log(`Created HTML directory: ${htmlDir}`);
-    const htmlContent = `<!DOCTYPE html> 
-    <html lang="en"> 
-    <head> 
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css"> 
-    <title>Document</title> 
-    </head> 
-    <body> 
-    <h1>Welcome</h1> 
-    <script src="./js/script.js"></script> 
-    </body>
-    </html>`;
-
-    fs.writeFileSync(path.join(htmlDir, 'index.html'), htmlContent);
-    console.log(`Created HTML file: ${path.join(htmlDir, 'index.html')}`);
-} else {
-    console.error(`HTML directory "${htmlDir}" already exists.`);
-}
-
+try {
+    // Use writeFileSync to create the file synchronously
+    fs.writeFileSync(`${projectDir}/index.html`, htmlContent);
+    console.log(`File index has been created.`);
+  } catch (err) {
+    console.error('Error creating the file:', err);
+  }
 
 // Create CSS directory and CSS file
 if (!fs.existsSync(cssDir)) {
     fs.mkdirSync(cssDir);
     console.log(`Created CSS directory: ${cssDir}`);
-    
+
     const cssContent = 'h1 {text-align:center; }';
 
     fs.writeFileSync(path.join(cssDir, 'style.css'), cssContent);
